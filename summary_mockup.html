@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAPIDA · Pilot Assistant Tool — Summary Tab Mockup</title>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="ui-kit.css">
+<link rel="stylesheet" href="summary.css">
+</head>
+<body>
+
+<!-- ════════════════════ HEADER ════════════════════ -->
+<header class="app-header">
+  <div class="header-top">
+    <img src="rapida-logo-white.svg" alt="RAPIDA" class="logo">
+    <span class="logo-sep">|</span>
+    <span class="logo-sub">Pilot Assistant Tool</span>
+    <div class="header-top-spacer"></div>
+    <button class="btn-header"><i data-lucide="settings" style="width:14px;height:14px"></i> Settings</button>
+  </div>
+  <div class="header-sub">
+    <i data-lucide="folder" style="width:14px;height:14px"></i>
+    <span class="path">/home/operator/missions/2026-03-31_Site-A</span>
+    <div class="header-sub-spacer"></div>
+    <span class="stat-pill">Total: <strong>448</strong></span>
+    <span class="stat-pill ok"><i data-lucide="check" style="width:13px;height:13px;stroke-width:3"></i> 312 (70%)</span>
+    <span class="stat-pill warn"><i data-lucide="alert-triangle" style="width:13px;height:13px;stroke-width:3"></i> 54 (12%)</span>
+    <span class="stat-pill crit"><i data-lucide="x" style="width:13px;height:13px;stroke-width:3"></i> 82 (18%)</span>
+    <span class="header-sub-sep">│</span>
+    <i data-lucide="calendar" style="width:14px;height:14px"></i>
+    <span class="header-date-label">Inspection date:</span>
+    <span class="date">31 March 09:04:12 — 31 March 13:48:54 (2026)</span>
+  </div>
+</header>
+
+<!-- ════════════════════ BODY ════════════════════ -->
+<div class="body">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <div class="sidebar">
+
+    <!-- Actions -->
+    <div class="sidebar-section">
+      <div class="btn-grid">
+        <button class="sb-btn primary"><i data-lucide="plus" style="width:14px;height:14px"></i> Add Files</button>
+        <button class="sb-btn"><i data-lucide="trash-2" style="width:14px;height:14px"></i> Clean</button>
+        <button class="sb-btn disabled"><i data-lucide="download" style="width:14px;height:14px"></i> Import</button>
+        <button class="sb-btn disabled"><i data-lucide="upload" style="width:14px;height:14px"></i> Export</button>
+      </div>
+    </div>
+
+    <!-- Folders -->
+    <div class="sidebar-section" style="flex:1; overflow:hidden; display:flex; flex-direction:column;">
+      <div class="sec-label">Folders</div>
+      <div class="folder-tree">
+
+        <!-- Folder: Dome -->
+        <div class="tree-item">
+          <span class="tree-arrow"><i data-lucide="chevron-down" style="width:12px;height:12px"></i></span>
+          <input type="checkbox" class="tree-check">
+          <span class="tree-name">Dome</span>
+          <span class="tree-total">2063</span>
+        </div>
+        <div class="tree-item tree-child">
+          <span class="tree-arrow" style="width:16px"></span>
+          <input type="checkbox" class="tree-check">
+          <span class="tree-name">DJI_202603191629_005</span>
+          <span class="tree-stat"><span class="tree-ok">46</span> · <span class="tree-warn">49</span> · <span class="tree-crit">2</span></span>
+        </div>
+        <div class="tree-item tree-child">
+          <span class="tree-arrow" style="width:16px"></span>
+          <input type="checkbox" class="tree-check">
+          <span class="tree-name">DJI_202603191743_006</span>
+          <span class="tree-stat"><span class="tree-ok">566</span> · <span class="tree-warn">503</span> · <span class="tree-crit">42</span></span>
+        </div>
+        <div class="tree-item tree-child">
+          <span class="tree-arrow" style="width:16px"></span>
+          <input type="checkbox" class="tree-check">
+          <span class="tree-name">DJI_202603191818_007</span>
+          <span class="tree-stat"><span class="tree-ok">594</span> · <span class="tree-warn">235</span> · <span class="tree-crit">26</span></span>
+        </div>
+
+        <!-- Folder: Dome Wall and Floor Wall -->
+        <div class="tree-item">
+          <span class="tree-arrow"><i data-lucide="chevron-down" style="width:12px;height:12px"></i></span>
+          <input type="checkbox" class="tree-check">
+          <span class="tree-name">Dome Wall and Floor Wall</span>
+          <span class="tree-total">2315</span>
+        </div>
+        <div class="tree-item tree-child">
+          <span class="tree-arrow" style="width:16px"></span>
+          <input type="checkbox" class="tree-check">
+          <span class="tree-name">DJI_202603200418_001</span>
+          <span class="tree-stat"><span class="tree-ok">16</span> · <span class="tree-warn">20</span> · <span class="tree-crit">38</span></span>
+        </div>
+        <div class="tree-item tree-child">
+          <span class="tree-arrow" style="width:16px"></span>
+          <input type="checkbox" class="tree-check">
+          <span class="tree-name">DJI_202603200452_002</span>
+          <span class="tree-stat"><span class="tree-ok">626</span> · <span class="tree-warn">578</span> · <span class="tree-crit">194</span></span>
+        </div>
+        <div class="tree-item tree-child">
+          <span class="tree-arrow" style="width:16px"></span>
+          <input type="checkbox" class="tree-check">
+          <span class="tree-name">DJI_202603200536_003</span>
+          <span class="tree-stat"><span class="tree-ok">240</span> · <span class="tree-warn">156</span> · <span class="tree-crit">447</span></span>
+        </div>
+
+        <!-- Folder: Wall Orbits and Snake -->
+        <div class="tree-item">
+          <span class="tree-arrow"><i data-lucide="chevron-down" style="width:12px;height:12px"></i></span>
+          <input type="checkbox" class="tree-check" checked>
+          <span class="tree-name">Wall Orbits and Snake</span>
+          <span class="tree-total">5162</span>
+        </div>
+        <div class="tree-item tree-child">
+          <span class="tree-arrow" style="width:16px"></span>
+          <input type="checkbox" class="tree-check" checked>
+          <span class="tree-name">DJI_202603191246_004</span>
+          <span class="tree-stat"><span class="tree-ok">305</span> · <span class="tree-warn">426</span> · <span class="tree-crit">24</span></span>
+        </div>
+        <div class="tree-item tree-child">
+          <span class="tree-arrow" style="width:16px"></span>
+          <input type="checkbox" class="tree-check" checked>
+          <span class="tree-name">DJI_202603191315_005</span>
+          <span class="tree-stat"><span class="tree-ok">1496</span> · <span class="tree-warn">119</span> · <span class="tree-crit">0</span></span>
+        </div>
+        <div class="tree-item tree-child">
+          <span class="tree-arrow" style="width:16px"></span>
+          <input type="checkbox" class="tree-check" checked>
+          <span class="tree-name">DJI_202603191355_006</span>
+          <span class="tree-stat"><span class="tree-ok">1217</span> · <span class="tree-warn">239</span> · <span class="tree-crit">13</span></span>
+        </div>
+        <div class="tree-item tree-child">
+          <span class="tree-arrow" style="width:16px"></span>
+          <input type="checkbox" class="tree-check" checked>
+          <span class="tree-name">DJI_202603191425_007</span>
+          <span class="tree-stat"><span class="tree-ok">573</span> · <span class="tree-warn">234</span> · <span class="tree-crit">416</span></span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Thumbnail -->
+    <div class="sidebar-thumb">
+      <div class="sec-label" style="margin-bottom:6px;">Thumbnail</div>
+      <div class="thumb-placeholder">
+        <i data-lucide="image" style="width:28px;height:28px"></i>
+        <span>No image selected</span>
+      </div>
+      <div class="thumb-info">
+        <div class="thumb-filename">DJI_20260320050421_0027_V.JPG</div>
+        <div class="thumb-meta">M4T · 4032×3024</div>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+  <!-- ═══ MAIN AREA ═══ -->
+  <div class="main-area">
+
+    <!-- Tab bar -->
+    <div class="tab-bar">
+      <div class="tab active"><i data-lucide="bar-chart-3"></i> Summary</div>
+      <div class="tab"><i data-lucide="image"></i> Detail</div>
+      <div class="tab"><i data-lucide="box"></i> 3D Viewer</div>
+    </div>
+
+    <!-- Tab content: Summary -->
+    <div class="tab-content">
+
+      <!-- ─── Section: BY CAMERA CONFIGURATION ─── -->
+      <div class="section-label">By Camera Configuration</div>
+      <div class="card" style="margin-bottom:16px;">
+        <table class="cam-table">
+          <thead>
+            <tr class="hdr-row">
+              <td style="width:148px">Drone</td>
+              <td style="width:108px">Camera</td>
+              <td style="width:88px">Sensor Type</td>
+              <td style="width:100px">Resolution</td>
+              <td>Focal Length</td>
+              <td style="width:95px; text-align:right; color:var(--r-blue)">Total</td>
+              <td style="width:95px; text-align:right; color:var(--r-ok)">OK</td>
+              <td style="width:95px; text-align:right; color:var(--r-warn)">Warn</td>
+              <td style="width:95px; text-align:right; color:var(--r-crit)">Crit</td>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Camera 1 – RGB -->
+            <tr onclick="selectCam(this,'cam1')">
+              <td>DJI Mavic 3T</td>
+              <td>Zenmuse H20T</td>
+              <td>RGB</td>
+              <td>4000×3000</td>
+              <td>24 mm</td>
+              <td class="cam-num total">220</td>
+              <td class="cam-num ok">154 (70%)</td>
+              <td class="cam-num warn">30 (14%)</td>
+              <td class="cam-num crit">36 (16%)</td>
+            </tr>
+            <!-- Camera 2 – IR -->
+            <tr onclick="selectCam(this,'cam2')">
+              <td>DJI Mavic 3T</td>
+              <td>Zenmuse H20T</td>
+              <td>Infrared</td>
+              <td>640×512</td>
+              <td>40 mm equiv.</td>
+              <td class="cam-num total">88</td>
+              <td class="cam-num ok">66 (75%)</td>
+              <td class="cam-num warn">8 (9%)</td>
+              <td class="cam-num crit">14 (16%)</td>
+            </tr>
+            <!-- Camera 3 -->
+            <tr onclick="selectCam(this,'cam3')">
+              <td>DJI Matrice 300</td>
+              <td>FC6310</td>
+              <td>RGB</td>
+              <td>5472×3648</td>
+              <td>8.8 mm</td>
+              <td class="cam-num total">140</td>
+              <td class="cam-num ok">92 (66%)</td>
+              <td class="cam-num warn">16 (11%)</td>
+              <td class="cam-num crit">32 (23%)</td>
+            </tr>
+            <!-- Total row -->
+            <tr class="total-row selected" onclick="selectCam(this,'total')">
+              <td class="total-label">Total</td>
+              <td></td><td></td><td></td><td></td>
+              <td class="cam-num total">448</td>
+              <td class="cam-num ok">312 (70%)</td>
+              <td class="cam-num warn">54 (12%)</td>
+              <td class="cam-num crit">82 (18%)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ─── Section: PARAMETER ANALYSIS ─── -->
+      <div class="section-label">Parameter Analysis</div>
+      <div class="section-subtitle">All Cameras — Aggregate</div>
+
+      <!-- Parameter groups -->
+      <div class="param-groups">
+
+        <!-- Group 1: Camera Parameters -->
+        <div class="param-group-card">
+          <div class="param-group-hdr"><i data-lucide="camera" style="width:14px;height:14px"></i> Camera Parameters</div>
+
+          <div class="param-row" title="Hover 0.5 s for tooltip">
+            <div class="p-badge ok"><i data-lucide="check" style="width:14px;height:14px"></i></div>
+            <div class="p-name">Resolution</div>
+            <div class="p-req">4K format</div>
+            <div class="p-count">448/448</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+
+          <div class="param-row">
+            <div class="p-badge ok"><i data-lucide="check" style="width:14px;height:14px"></i></div>
+            <div class="p-name">Digital Zoom</div>
+            <div class="p-req">1.0×</div>
+            <div class="p-count">448/448</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+
+          <div class="param-row">
+            <div class="p-badge ok"><i data-lucide="check" style="width:14px;height:14px"></i></div>
+            <div class="p-name">Exposure Mode</div>
+            <div class="p-req">Auto</div>
+            <div class="p-count">448/448</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+
+          <!-- Clickable — non-OK -->
+          <div class="param-row clickable" onclick="goToViewer('Exposure Value (EV)')" title="Click to open 3D Viewer with this issue">
+            <div class="p-badge warn"><i data-lucide="alert-triangle" style="width:14px;height:14px"></i></div>
+            <div class="p-name">Exposure Value (EV)</div>
+            <div class="p-req">0.0</div>
+            <div class="p-count">412/448</div>
+            <div class="p-pct warn">92.0%</div>
+          </div>
+
+          <div class="param-row">
+            <div class="p-badge ok"><i data-lucide="check" style="width:14px;height:14px"></i></div>
+            <div class="p-name">White Balance Mode</div>
+            <div class="p-req">Auto</div>
+            <div class="p-count">448/448</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+
+          <div class="param-row">
+            <div class="p-badge ok"><i data-lucide="check" style="width:14px;height:14px"></i></div>
+            <div class="p-name">Shutter Type</div>
+            <div class="p-req">Mechanical</div>
+            <div class="p-count">448/448</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+
+          <!-- Clickable — non-OK -->
+          <div class="param-row clickable" onclick="goToViewer('Dewarping')" title="Click to open 3D Viewer with this issue">
+            <div class="p-badge crit"><i data-lucide="x" style="width:14px;height:14px"></i></div>
+            <div class="p-name">Dewarping</div>
+            <div class="p-req">Disabled</div>
+            <div class="p-count">386/448</div>
+            <div class="p-pct crit">86.2%</div>
+          </div>
+        </div>
+
+        <!-- Group 2: Flight Parameters -->
+        <div class="param-group-card">
+          <div class="param-group-hdr"><i data-lucide="wind" style="width:14px;height:14px"></i> Flight Parameters</div>
+
+          <!-- Clickable -->
+          <div class="param-row clickable" onclick="goToViewer('Flight Speed')" title="Click to open 3D Viewer with this issue">
+            <div class="p-badge crit"><i data-lucide="x" style="width:14px;height:14px"></i></div>
+            <div class="p-name">Flight Speed</div>
+            <div class="p-req">max. 1.0 m/s</div>
+            <div class="p-count">301/448</div>
+            <div class="p-pct crit">67.2%</div>
+          </div>
+
+          <!-- Info (GPS) — not clickable -->
+          <div class="param-row">
+            <div class="p-badge info"><i data-lucide="info" style="width:14px;height:14px"></i></div>
+            <div class="p-name">GPS</div>
+            <div class="p-req">Used</div>
+            <div class="p-count">448/448</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+
+          <!-- Info (RTK) — not clickable -->
+          <div class="param-row">
+            <div class="p-badge info"><i data-lucide="info" style="width:14px;height:14px"></i></div>
+            <div class="p-name">RTK Signal</div>
+            <div class="p-req">Good</div>
+            <div class="p-count">398/448</div>
+            <div class="p-pct warn">88.8%</div>
+          </div>
+
+          <!-- Clickable -->
+          <div class="param-row clickable" onclick="goToViewer('Distance to object')" title="Click to open 3D Viewer with this issue">
+            <div class="p-badge crit"><i data-lucide="x" style="width:14px;height:14px"></i></div>
+            <div class="p-name">Distance to object</div>
+            <div class="p-req">max. 2.6 m</div>
+            <div class="p-count">362/448</div>
+            <div class="p-pct crit">80.8%</div>
+          </div>
+
+          <!-- Clickable — GSD (currently active) -->
+          <div class="param-row clickable" style="background:var(--r-crit-bg);" onclick="goToViewer('GSD')" title="Click to open 3D Viewer with this issue">
+            <div class="p-badge crit"><i data-lucide="x" style="width:14px;height:14px"></i></div>
+            <div class="p-name" style="font-weight:700;">GSD</div>
+            <div class="p-req">max. 0.7 mm/pix</div>
+            <div class="p-count">403/448</div>
+            <div class="p-pct crit">90.0%</div>
+          </div>
+
+          <div class="param-row">
+            <div class="p-badge ok"><i data-lucide="check" style="width:14px;height:14px"></i></div>
+            <div class="p-name">Timelapse</div>
+            <div class="p-req">Used</div>
+            <div class="p-count">2/2</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+
+          <div class="param-row">
+            <div class="p-badge ok"><i data-lucide="check" style="width:14px;height:14px"></i></div>
+            <div class="p-name">File Gaps</div>
+            <div class="p-req">0 gaps</div>
+            <div class="p-count">2/2</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+        </div>
+
+        <!-- Group 3: IR Parameters -->
+        <div class="param-group-card">
+          <div class="param-group-hdr"><i data-lucide="thermometer" style="width:14px;height:14px"></i> Infrared Parameters</div>
+
+          <div class="param-row">
+            <div class="p-badge ok"><i data-lucide="check" style="width:14px;height:14px"></i></div>
+            <div class="p-name">IR Image</div>
+            <div class="p-req">Present</div>
+            <div class="p-count">88/88</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+
+          <div class="param-row">
+            <div class="p-badge ok"><i data-lucide="check" style="width:14px;height:14px"></i></div>
+            <div class="p-name">IR Resolution</div>
+            <div class="p-req">1280×1024</div>
+            <div class="p-count">88/88</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+
+          <div class="param-row">
+            <div class="p-badge ok"><i data-lucide="check" style="width:14px;height:14px"></i></div>
+            <div class="p-name">IR Digital Zoom</div>
+            <div class="p-req">1.0×</div>
+            <div class="p-count">88/88</div>
+            <div class="p-pct ok">100.0%</div>
+          </div>
+
+          <!-- Clickable -->
+          <div class="param-row clickable" onclick="goToViewer('IR Mode')" title="Click to open 3D Viewer with this issue">
+            <div class="p-badge warn"><i data-lucide="alert-triangle" style="width:14px;height:14px"></i></div>
+            <div class="p-name">IR Mode</div>
+            <div class="p-req">WhiteIron</div>
+            <div class="p-count">79/88</div>
+            <div class="p-pct warn">89.8%</div>
+          </div>
+        </div>
+
+      </div><!-- /param-groups -->
+
+      <!-- ─── Images by Issue ─── -->
+      <div class="section-label">Images by Issue</div>
+
+      <!-- Issue filter tags -->
+      <div class="issue-filter-row">
+        <span class="issue-tag crit active-crit" onclick="toggleIssue(this,'crit')"><i data-lucide="x" style="width:11px;height:11px;stroke-width:3"></i> Exposure Value (EV)</span>
+        <span class="issue-tag warn" onclick="toggleIssue(this,'warn')"><i data-lucide="alert-triangle" style="width:11px;height:11px;stroke-width:2.5"></i> Flight Speed</span>
+        <span class="issue-tag crit" onclick="toggleIssue(this,'crit')"><i data-lucide="x" style="width:11px;height:11px;stroke-width:3"></i> Distance to object</span>
+        <span class="issue-tag crit" onclick="toggleIssue(this,'crit')"><i data-lucide="x" style="width:11px;height:11px;stroke-width:3"></i> GSD</span>
+        <span class="issue-tag warn" onclick="toggleIssue(this,'warn')"><i data-lucide="alert-triangle" style="width:11px;height:11px;stroke-width:2.5"></i> IR Image</span>
+      </div>
+
+      <div class="img-table-hint">Showing first 100 of 1424 images</div>
+
+      <div class="img-table-card">
+        <!-- Table header -->
+        <div class="img-row img-hdr">
+          <div class="img-name">Image</div>
+          <div class="img-cam">Camera</div>
+          <div class="img-res">Resolution</div>
+          <div class="img-focal">Focal</div>
+          <div class="img-issues">Issues</div>
+        </div>
+
+        <div class="img-table-scroll">
+          <div class="img-row" onclick="selectImg(this)">
+            <div class="img-name">DJI_20260319125254_0001_V.JPG</div>
+            <div class="img-cam">M4E</div>
+            <div class="img-res">5280×3956</div>
+            <div class="img-focal">12.29 mm</div>
+            <div class="img-issues">
+              <span class="img-issue-tag crit">Distance to object</span>
+              <span class="img-issue-tag crit">GSD</span>
+            </div>
+          </div>
+
+          <div class="img-row" onclick="selectImg(this)">
+            <div class="img-name">DJI_20260319125255_0003_V.JPG</div>
+            <div class="img-cam">M4E</div>
+            <div class="img-res">5280×3956</div>
+            <div class="img-focal">12.29 mm</div>
+            <div class="img-issues">
+              <span class="img-issue-tag crit">Distance to object</span>
+              <span class="img-issue-tag crit">GSD</span>
+            </div>
+          </div>
+
+          <div class="img-row" onclick="selectImg(this)">
+            <div class="img-name">DJI_20260319125256_0004_V.JPG</div>
+            <div class="img-cam">M4E</div>
+            <div class="img-res">5280×3956</div>
+            <div class="img-focal">12.29 mm</div>
+            <div class="img-issues">
+              <span class="img-issue-tag crit">Distance to object</span>
+              <span class="img-issue-tag crit">GSD</span>
+            </div>
+          </div>
+
+          <div class="img-row" onclick="selectImg(this)">
+            <div class="img-name">DJI_20260319125257_0005_V.JPG</div>
+            <div class="img-cam">M4E</div>
+            <div class="img-res">5280×3956</div>
+            <div class="img-focal">12.29 mm</div>
+            <div class="img-issues">
+              <span class="img-issue-tag crit">Distance to object</span>
+              <span class="img-issue-tag crit">GSD</span>
+            </div>
+          </div>
+
+          <div class="img-row" onclick="selectImg(this)">
+            <div class="img-name">DJI_20260319125258_0006_V.JPG</div>
+            <div class="img-cam">M4E</div>
+            <div class="img-res">5280×3956</div>
+            <div class="img-focal">12.29 mm</div>
+            <div class="img-issues">
+              <span class="img-issue-tag crit">Distance to object</span>
+              <span class="img-issue-tag crit">GSD</span>
+            </div>
+          </div>
+
+          <div class="img-row" onclick="selectImg(this)">
+            <div class="img-name">DJI_20260319125259_0007_V.JPG</div>
+            <div class="img-cam">M4E</div>
+            <div class="img-res">5280×3956</div>
+            <div class="img-focal">12.29 mm</div>
+            <div class="img-issues">
+              <span class="img-issue-tag crit">Distance to object</span>
+              <span class="img-issue-tag crit">GSD</span>
+            </div>
+          </div>
+
+          <div class="img-row" onclick="selectImg(this)">
+            <div class="img-name">DJI_20260319125300_0008_V.JPG</div>
+            <div class="img-cam">M4E</div>
+            <div class="img-res">5280×3956</div>
+            <div class="img-focal">12.29 mm</div>
+            <div class="img-issues">
+              <span class="img-issue-tag crit">Distance to object</span>
+              <span class="img-issue-tag crit">GSD</span>
+            </div>
+          </div>
+
+          <div class="img-row" onclick="selectImg(this)">
+            <div class="img-name">DJI_20260319125301_0009_V.JPG</div>
+            <div class="img-cam">M4E</div>
+            <div class="img-res">5280×3956</div>
+            <div class="img-focal">12.29 mm</div>
+            <div class="img-issues">
+              <span class="img-issue-tag crit">Distance to object</span>
+              <span class="img-issue-tag crit">GSD</span>
+            </div>
+          </div>
+        </div>
+      </div><!-- /img-table-card -->
+
+    </div><!-- /tab-content -->
+  </div><!-- /main-area -->
+</div><!-- /body -->
+
+<!-- ── Tooltip popup ──────────────────────────────────────────────── -->
+<div class="tooltip-popup" id="tooltipPopup">
+  <div class="tooltip-title" id="ttTitle">GSD</div>
+  <div class="tooltip-sep"></div>
+  <div class="tooltip-section-lbl">Description</div>
+  <div class="tooltip-text" style="margin-bottom:4px">
+    Ground Sampling Distance — the physical size of one pixel on the ground.
+    Too high GSD means images lack sufficient resolution for accurate analysis.
+  </div>
+  <div class="tooltip-sep"></div>
+  <div class="tooltip-section-lbl">Per-Image Severity</div>
+  <div class="tooltip-row">
+    <div class="tooltip-icon ok"><i data-lucide="check" style="width:14px;height:14px;stroke-width:3"></i></div>
+    <div class="tooltip-text">GSD ≤ 0.7 mm/pix</div>
+  </div>
+  <div class="tooltip-row">
+    <div class="tooltip-icon warn"><i data-lucide="alert-triangle" style="width:14px;height:14px;stroke-width:3"></i></div>
+    <div class="tooltip-text">0.7 mm/pix &lt; GSD ≤ 1.0 mm/pix</div>
+  </div>
+  <div class="tooltip-row">
+    <div class="tooltip-icon crit"><i data-lucide="x" style="width:14px;height:14px;stroke-width:3"></i></div>
+    <div class="tooltip-text">GSD &gt; 1.0 mm/pix</div>
+  </div>
+  <div class="tooltip-sep"></div>
+  <div class="tooltip-section-lbl">Analysis Severity</div>
+  <div class="tooltip-row">
+    <div class="tooltip-icon ok"><i data-lucide="check" style="width:14px;height:14px;stroke-width:3"></i></div>
+    <div class="tooltip-text">All images have GSD ≤ 0.7 mm/pix</div>
+  </div>
+  <div class="tooltip-row">
+    <div class="tooltip-icon warn"><i data-lucide="alert-triangle" style="width:14px;height:14px;stroke-width:3"></i></div>
+    <div class="tooltip-text">≥ 95 % of images are OK</div>
+  </div>
+  <div class="tooltip-row">
+    <div class="tooltip-icon crit"><i data-lucide="x" style="width:14px;height:14px;stroke-width:3"></i></div>
+    <div class="tooltip-text">&lt; 95 % of images are OK</div>
+  </div>
+</div>
+
+<!-- ── Toast notification ─────────────────────────────────────────── -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── Initialize Lucide icons ──── */
+lucide.createIcons();
+
+/* ── Camera row selection ──── */
+function selectCam(row, key) {
+  document.querySelectorAll('.cam-table tbody tr').forEach(r => r.classList.remove('selected'));
+  row.classList.add('selected');
+}
+
+/* ── Issue tag toggle ──── */
+function toggleIssue(el, type) {
+  const activeClass = 'active-' + type;
+  const wasActive = el.classList.contains(activeClass);
+  // Deselect all tags
+  document.querySelectorAll('.issue-tag').forEach(t => {
+    t.classList.remove('active-warn', 'active-crit');
+  });
+  if (!wasActive) el.classList.add(activeClass);
+}
+
+/* ── Image row selection ──── */
+function selectImg(row) {
+  document.querySelectorAll('.img-row').forEach(r => r.classList.remove('selected'));
+  row.classList.add('selected');
+  // Show selected thumbnail stub in sidebar
+  const name = row.querySelector('.img-name').textContent;
+  const sidebar_thumb = document.querySelector('.thumb-placeholder');
+  if (sidebar_thumb) {
+    sidebar_thumb.innerHTML = `
+      <i data-lucide="image" style="width:28px;height:28px"></i>
+      <span style="font-size:10px; text-align:center; padding:0 6px; word-break:break-all">${name}</span>
+    `;
+    lucide.createIcons();
+  }
+}
+
+/* ── Navigate to 3D Viewer ──── */
+function goToViewer(paramName) {
+  showToast(`→ Opening 3D Viewer · Issue: ${paramName}`);
+  // In a real app this would switch the tab and call activate_issue()
+}
+
+/* ── Tooltip on param row hover ──── */
+let tooltipTimer = null;
+const popup = document.getElementById('tooltipPopup');
+document.querySelectorAll('.param-row').forEach(row => {
+  row.addEventListener('mouseenter', (e) => {
+    const name = row.querySelector('.p-name')?.textContent;
+    if (!name) return;
+    tooltipTimer = setTimeout(() => {
+      document.getElementById('ttTitle').textContent = name;
+      const x = e.clientX + 16;
+      const y = e.clientY - 20;
+      const pw = 400;
+      popup.style.left = (x + pw > window.innerWidth ? e.clientX - pw - 16 : x) + 'px';
+      popup.style.top  = Math.max(4, Math.min(y, window.innerHeight - popup.offsetHeight - 10)) + 'px';
+      popup.classList.add('visible');
+    }, 500);
+  });
+  row.addEventListener('mouseleave', () => {
+    clearTimeout(tooltipTimer);
+    popup.classList.remove('visible');
+  });
+});
+
+/* ── Toast helper ──── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.opacity = '1';
+  setTimeout(() => { t.style.opacity = '0'; }, 2500);
+}
+</script>
+</body>
+</html>
