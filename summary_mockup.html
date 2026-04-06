@@ -325,6 +325,15 @@
 
     </div><!-- /tab-pane: summary -->
 
+    <!-- ═══ Prototype Scenario Switcher ═══ -->
+    <div class="scenario-bar">
+      <span class="scenario-label">Prototype scenario:</span>
+      <button class="scenario-btn active" data-scenario="current">Current (mixed)</button>
+      <button class="scenario-btn" data-scenario="allgood">1 — All Good</button>
+      <button class="scenario-btn" data-scenario="flight-nogo">2 — Flight NoGo</button>
+      <button class="scenario-btn" data-scenario="flight-warn">3 — Flight Warnings</button>
+    </div>
+
     <!-- ═══ Tab: Analysis ═══ -->
     <div class="tab-content tab-pane" data-pane="analysis" style="display:none;">
 
@@ -845,6 +854,185 @@ function showToast(msg) {
   t.style.opacity = '1';
   setTimeout(() => { t.style.opacity = '0'; }, 2500);
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   PROTOTYPE SCENARIO SWITCHER
+   ══════════════════════════════════════════════════════════════════════ */
+const SCENARIOS = {
+  current: {
+    camera: [
+      { status:'crit', icon:'x', sw:3, name:'Digital Zoom',       pct:'86.2%', req:'req. 1.0×',       count:'386 / 448' },
+      { status:'warn', icon:'alert-triangle', sw:2.5, name:'Exposure Value (EV)', pct:'92.0%', req:'req. 0.0', count:'412 / 448' },
+    ],
+    flight: [
+      { status:'crit', icon:'x', sw:3, name:'Flight Speed',       pct:'67.2%', req:'max. 1.0 m/s',    count:'301 / 448' },
+      { status:'crit', icon:'x', sw:3, name:'Distance to Object', pct:'80.8%', req:'max. 2.6 m',      count:'362 / 448' },
+      { status:'crit', icon:'x', sw:3, name:'GSD',                pct:'90.0%', req:'max. 0.7 mm/pix', count:'403 / 448' },
+      { status:'info', icon:'info', sw:2, name:'GPS',             pct:'100%',  req:'Used',             count:'448 / 448' },
+      { status:'info', icon:'info', sw:2, name:'RTK Signal',      pct:'88.8%', req:'Good',             count:'398 / 448' },
+    ],
+    ir: [
+      { status:'warn', icon:'alert-triangle', sw:2.5, name:'IR Mode', pct:'89.8%', req:'req. WhiteIron', count:'79 / 88' },
+    ],
+    gsd: 'Target GSD: 0.7 mm/pix',
+  },
+
+  allgood: {
+    cams: [
+      { label: 'DJI Mavic 3T · Zenmuse H20T', count: 220 },
+    ],
+    camera: [
+      { type:'success', title:'All camera parameters are within specification.', sub:'So perfect, don\'t even breathe near it.' },
+    ],
+    flight: [
+      { type:'success', title:'All flight parameters are within specification.', sub:'The kind of flight passengers would clap for.' },
+      { status:'info', icon:'info', sw:2, name:'GPS',        pct:'100%', req:'Used', count:'220 / 220' },
+      { status:'info', icon:'info', sw:2, name:'RTK Signal',  pct:'100%', req:'Good', count:'220 / 220' },
+    ],
+    ir: [
+      { type:'success', title:'All infrared parameters are within specification.', sub:'Hot data. Zero hot takes.' },
+    ],
+    gsd: 'Target GSD: 0.7 mm/pix',
+  },
+
+  'flight-nogo': {
+    cams: [
+      { label: 'All Cameras', count: 308 },
+      { label: 'DJI Mavic 3T · Zenmuse H20T', count: 220 },
+      { label: 'DJI Matrice 300 · FC6310', count: 88 },
+    ],
+    camera: [
+      { status:'warn', icon:'alert-triangle', sw:2.5, name:'Exposure Value (EV)', pct:'95.5%', req:'req. 0.0', count:'294 / 308' },
+    ],
+    flight: [
+      { status:'warn', icon:'alert-triangle', sw:2.5, name:'Flight Speed',  pct:'98.7%', req:'max. 1.0 m/s',    count:'304 / 308' },
+      { status:'crit', icon:'x', sw:3, name:'Distance to Object',           pct:'66.0%', req:'max. 2.6 m',      count:'203 / 308' },
+      { status:'crit', icon:'x', sw:3, name:'GSD',                          pct:'61.8%', req:'max. 0.7 mm/pix', count:'190 / 308' },
+      { status:'info', icon:'info', sw:2, name:'GPS',                       pct:'100%',  req:'Used',             count:'308 / 308' },
+      { status:'info', icon:'info', sw:2, name:'RTK Signal',                pct:'92.5%', req:'Good',             count:'285 / 308' },
+    ],
+    ir: [
+      { type:'notice', title:'No infrared images detected in this dataset.' },
+    ],
+    gsd: 'Target GSD: 0.7 mm/pix',
+  },
+
+  'flight-warn': {
+    cams: [
+      { label: 'DJI Mavic 3T · Zenmuse H20T', count: 220 },
+    ],
+    camera: [
+      { type:'success', title:'All camera parameters are within specification.', sub:'So perfect, don\'t even breathe near it.' },
+    ],
+    flight: [
+      { status:'warn', icon:'alert-triangle', sw:2.5, name:'Flight Speed', pct:'92.4%', req:'max. 1.0 m/s', count:'203 / 220' },
+      { status:'info', icon:'info', sw:2, name:'GPS',                      pct:'100%',  req:'Used',          count:'220 / 220' },
+      { status:'info', icon:'info', sw:2, name:'RTK Signal',               pct:'100%',  req:'Good',          count:'220 / 220' },
+    ],
+    ir: [
+      { type:'success', title:'All infrared parameters are within specification.', sub:'Hot data. Zero hot takes.' },
+    ],
+    gsd: 'Target GSD: 0.7 mm/pix',
+  },
+};
+
+function applyScenario(key) {
+  const sc = SCENARIOS[key];
+  if (!sc) return;
+  const blocks = document.querySelectorAll('[data-pane="summary"] .pilot-block');
+  const groups = [sc.camera, sc.flight, sc.ir];
+
+  // Update cam pills if scenario provides them
+  const pillsContainer = document.querySelector('.cam-pills');
+  if (sc.cams) {
+    let pillsHtml = '';
+    sc.cams.forEach((c, i) => {
+      pillsHtml += '<button class="cam-pill' + (i === 0 ? ' active' : '') + '" data-cam="cam' + i + '">' + c.label + ' <span class="cam-pill-count">' + c.count + '</span></button>';
+    });
+    pillsContainer.innerHTML = pillsHtml;
+  } else {
+    pillsContainer.innerHTML = '<button class="cam-pill active" data-cam="all">All Cameras <span class="cam-pill-count">448</span></button>'
+      + '<button class="cam-pill" data-cam="cam1">DJI Mavic 3T · Zenmuse H20T <span class="cam-pill-count">220</span></button>'
+      + '<button class="cam-pill" data-cam="cam2">DJI Mavic 3T · Zenmuse H20T <span class="cam-pill-count">88</span></button>'
+      + '<button class="cam-pill" data-cam="cam3">DJI Matrice 300 · FC6310 <span class="cam-pill-count">140</span></button>';
+  }
+  pillsContainer.querySelectorAll('.cam-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      pillsContainer.querySelectorAll('.cam-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+
+  blocks.forEach((block, bi) => {
+    const tiles = block.querySelectorAll('.pilot-tiles');
+    if (!tiles.length) return;
+    const container = tiles[0];
+    const data = groups[bi];
+    if (!data) return;
+
+    // Rebuild tiles
+    let html = '';
+    data.forEach((p) => {
+      if (p.type === 'success') {
+        html += '<div class="pilot-success">';
+        html += '  <div class="pilot-success-icon"><i data-lucide="check-circle" style="width:28px;height:28px;stroke-width:2"></i></div>';
+        html += '  <div class="pilot-success-body"><div class="pilot-success-title">' + p.title + '</div><div class="pilot-success-sub">' + p.sub + '</div></div>';
+        html += '</div>';
+        return;
+      }
+      if (p.type === 'notice') {
+        html += '<div class="pilot-notice">';
+        html += '  <div class="pilot-notice-icon"><i data-lucide="info" style="width:22px;height:22px;stroke-width:2"></i></div>';
+        html += '  <div class="pilot-notice-text">' + p.title + '</div>';
+        html += '</div>';
+        return;
+      }
+      const swAttr = p.sw ? ';stroke-width:' + p.sw : '';
+      const hasHelp = p.status !== 'info';
+      html += '<div class="pilot-tile ' + p.status + '">';
+      html += '  <div class="pilot-tile-icon"><i data-lucide="' + p.icon + '" style="width:20px;height:20px' + swAttr + '"></i></div>';
+      html += '  <div class="pilot-tile-body">';
+      html += '    <div class="pilot-tile-name">' + p.name + '</div>';
+      html += '    <div class="pilot-tile-pct">' + p.pct + '</div>';
+      html += '    <div class="pilot-tile-req">' + p.req + '</div>';
+      html += '    <div class="pilot-tile-count">' + p.count + '</div>';
+      html += '  </div>';
+      html += '</div>';
+      if (hasHelp) {
+        html += '<div class="pilot-help" style="display:none">';
+        html += '  <div class="pilot-help-title">What it means</div>';
+        html += '  <div class="pilot-help-text">Placeholder — you will fill in specific text for each scenario.</div>';
+        html += '  <div class="pilot-help-title">How to fix</div>';
+        html += '  <div class="pilot-help-text">Placeholder — specific fix instructions.</div>';
+        html += '</div>';
+      }
+    });
+    container.innerHTML = html;
+
+    // Update GSD text if flight block
+    if (bi === 1) {
+      const gsdEl = block.querySelector('.pilot-block-gsd');
+      if (gsdEl) gsdEl.textContent = sc.gsd;
+    }
+  });
+
+  // Re-init Lucide icons and help click handlers
+  lucide.createIcons();
+  document.querySelectorAll('.pilot-tile').forEach(tile => {
+    if (tile.nextElementSibling && tile.nextElementSibling.classList.contains('pilot-help')) {
+      tile.addEventListener('click', () => toggleHelp(tile));
+    }
+  });
+}
+
+// Scenario button handlers
+document.querySelectorAll('.scenario-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyScenario(btn.dataset.scenario);
+  });
+});
 </script>
 </body>
 </html>

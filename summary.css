@@ -583,10 +583,14 @@ body {
 .pilot-block-badge.nogo   { background: var(--r-crit);  color: #fff; }
 
 .pilot-block-gsd {
-  font-size: var(--r-font-size);
-  font-weight: 700;
+  font-size: var(--r-font-size-sm);
+  font-weight: 500;
   color: var(--r-text);
   margin-left: 4px;
+  padding: 2px 10px;
+  border: 1px solid var(--r-border);
+  border-radius: var(--r-radius-sm);
+  background: var(--r-bg);
 }
 
 /* ── Tile grid ──────────────────────────────────────────────────────── */
@@ -753,4 +757,100 @@ body {
   font-weight: 700;
   color: var(--r-info);
   font-variant-numeric: tabular-nums;
+}
+
+/* ── Scenario switcher bar ──────────────────────────────────────────── */
+.scenario-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: #1a1a2e;
+  border-top: 2px solid #e94560;
+  z-index: 9999;
+}
+.scenario-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e94560;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right: 8px;
+}
+.scenario-btn {
+  padding: 6px 16px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(255,255,255,.7);
+  font-family: var(--r-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+}
+.scenario-btn:hover {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+}
+.scenario-btn.active {
+  background: #e94560;
+  border-color: #e94560;
+  color: #fff;
+}
+
+/* ── Notice card (e.g. "not detected") ─────────────────────────────── */
+.pilot-notice {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  background: var(--r-surface-2, #f0f0f3);
+  border-radius: var(--r-radius-md);
+  color: var(--r-text-secondary, #6b7280);
+}
+.pilot-notice-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  opacity: .6;
+}
+.pilot-notice-text {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ── Success card (All Good) ────────────────────────────────────────── */
+.pilot-success {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--r-ok);
+  border-radius: var(--r-radius-md);
+  color: #fff;
+}
+.pilot-success-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  opacity: .9;
+}
+.pilot-success-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.pilot-success-sub {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  opacity: .85;
 }
