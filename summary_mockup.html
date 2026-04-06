@@ -182,134 +182,144 @@
       <!-- ════════════ CAMERA PARAMETERS ════════════ -->
       <div class="pilot-block nogo">
         <div class="pilot-block-hdr">
-          <i data-lucide="camera" style="width:14px;height:14px"></i>
+          <i data-lucide="camera" style="width:16px;height:16px"></i>
           <span class="pilot-block-title">Camera Parameters</span>
-          <span class="pilot-block-badge nogo">NO GO</span>
         </div>
+        <div class="pilot-tiles">
+          <div class="pilot-tile crit">
+            <div class="pilot-tile-icon"><i data-lucide="x" style="width:20px;height:20px;stroke-width:3"></i></div>
+            <div class="pilot-tile-body">
+              <div class="pilot-tile-name">Digital Zoom</div>
+              <div class="pilot-tile-pct">86.2%</div>
+              <div class="pilot-tile-req">req. 1.0×</div>
+              <div class="pilot-tile-count">386 / 448</div>
+            </div>
+          </div>
+          <div class="pilot-help" style="display:none">
+            <div class="pilot-help-title">What it means</div>
+            <div class="pilot-help-text">Digital zoom crops and upscales the image, reducing effective resolution and introducing artifacts. Photogrammetric accuracy drops significantly.</div>
+            <div class="pilot-help-title">How to fix</div>
+            <div class="pilot-help-text">Set digital zoom to 1.0× in camera settings before the flight.</div>
+          </div>
 
-        <div class="pilot-param crit">
-          <div class="pilot-param-icon"><i data-lucide="x" style="width:14px;height:14px;stroke-width:3"></i></div>
-          <div class="pilot-param-name">Digital Zoom</div>
-          <div class="pilot-param-req">1.0×</div>
-          <div class="pilot-param-count">386/448</div>
-          <div class="pilot-param-pct">86.2%</div>
-          <button class="pilot-help-btn" onclick="toggleHelp(this)" aria-label="Help"><i data-lucide="help-circle" style="width:14px;height:14px"></i></button>
-        </div>
-        <div class="pilot-help" style="display:none">
-          <div class="pilot-help-title">What it means</div>
-          <div class="pilot-help-text">Digital zoom crops and upscales the image, reducing effective resolution and introducing artifacts. Photogrammetric accuracy drops significantly.</div>
-          <div class="pilot-help-title">How to fix</div>
-          <div class="pilot-help-text">Set digital zoom to 1.0× in camera settings before the flight.</div>
-        </div>
-
-        <div class="pilot-param warn">
-          <div class="pilot-param-icon"><i data-lucide="alert-triangle" style="width:14px;height:14px;stroke-width:2.5"></i></div>
-          <div class="pilot-param-name">Exposure Value (EV)</div>
-          <div class="pilot-param-req">0.0</div>
-          <div class="pilot-param-count">412/448</div>
-          <div class="pilot-param-pct">92.0%</div>
-          <button class="pilot-help-btn" onclick="toggleHelp(this)" aria-label="Help"><i data-lucide="help-circle" style="width:14px;height:14px"></i></button>
-        </div>
-        <div class="pilot-help" style="display:none">
-          <div class="pilot-help-title">What it means</div>
-          <div class="pilot-help-text">Non-zero EV compensation shifts exposure brighter or darker than metered. Minor shifts are usually acceptable, but large offsets can clip highlights or shadows.</div>
-          <div class="pilot-help-title">How to fix</div>
-          <div class="pilot-help-text">Set EV compensation to 0.0 in camera settings. If lighting is tricky, use manual exposure instead.</div>
+          <div class="pilot-tile warn">
+            <div class="pilot-tile-icon"><i data-lucide="alert-triangle" style="width:20px;height:20px;stroke-width:2.5"></i></div>
+            <div class="pilot-tile-body">
+              <div class="pilot-tile-name">Exposure Value (EV)</div>
+              <div class="pilot-tile-pct">92.0%</div>
+              <div class="pilot-tile-req">req. 0.0</div>
+              <div class="pilot-tile-count">412 / 448</div>
+            </div>
+          </div>
+          <div class="pilot-help" style="display:none">
+            <div class="pilot-help-title">What it means</div>
+            <div class="pilot-help-text">Non-zero EV compensation shifts exposure brighter or darker than metered. Minor shifts are usually acceptable, but large offsets can clip highlights or shadows.</div>
+            <div class="pilot-help-title">How to fix</div>
+            <div class="pilot-help-text">Set EV compensation to 0.0 in camera settings. If lighting is tricky, use manual exposure instead.</div>
+          </div>
         </div>
       </div>
 
       <!-- ════════════ FLIGHT PARAMETERS ════════════ -->
       <div class="pilot-block nogo">
         <div class="pilot-block-hdr">
-          <i data-lucide="wind" style="width:14px;height:14px"></i>
+          <i data-lucide="wind" style="width:16px;height:16px"></i>
           <span class="pilot-block-title">Flight Parameters</span>
-          <span class="pilot-block-badge nogo">NO GO</span>
           <span class="pilot-block-gsd">Target GSD: 0.7 mm/pix</span>
         </div>
+        <div class="pilot-tiles">
+          <div class="pilot-tile crit">
+            <div class="pilot-tile-icon"><i data-lucide="x" style="width:20px;height:20px;stroke-width:3"></i></div>
+            <div class="pilot-tile-body">
+              <div class="pilot-tile-name">Flight Speed</div>
+              <div class="pilot-tile-pct">67.2%</div>
+              <div class="pilot-tile-req">max. 1.0 m/s</div>
+              <div class="pilot-tile-count">301 / 448</div>
+            </div>
+          </div>
+          <div class="pilot-help" style="display:none">
+            <div class="pilot-help-title">What it means</div>
+            <div class="pilot-help-text">High flight speed causes motion blur which degrades photogrammetric accuracy.</div>
+            <div class="pilot-help-title">How to fix</div>
+            <div class="pilot-help-text">Reduce flight speed in mission planning to ≤ 1.0 m/s, or increase shutter speed to compensate.</div>
+          </div>
 
-        <div class="pilot-param crit">
-          <div class="pilot-param-icon"><i data-lucide="x" style="width:14px;height:14px;stroke-width:3"></i></div>
-          <div class="pilot-param-name">Flight Speed</div>
-          <div class="pilot-param-req">max. 1.0 m/s</div>
-          <div class="pilot-param-count">301/448</div>
-          <div class="pilot-param-pct">67.2%</div>
-          <button class="pilot-help-btn" onclick="toggleHelp(this)" aria-label="Help"><i data-lucide="help-circle" style="width:14px;height:14px"></i></button>
-        </div>
-        <div class="pilot-help" style="display:none">
-          <div class="pilot-help-title">What it means</div>
-          <div class="pilot-help-text">High flight speed causes motion blur which degrades photogrammetric accuracy.</div>
-          <div class="pilot-help-title">How to fix</div>
-          <div class="pilot-help-text">Reduce flight speed in mission planning to ≤ 1.0 m/s, or increase shutter speed to compensate.</div>
-        </div>
+          <div class="pilot-tile crit">
+            <div class="pilot-tile-icon"><i data-lucide="x" style="width:20px;height:20px;stroke-width:3"></i></div>
+            <div class="pilot-tile-body">
+              <div class="pilot-tile-name">Distance to Object</div>
+              <div class="pilot-tile-pct">80.8%</div>
+              <div class="pilot-tile-req">max. 2.6 m</div>
+              <div class="pilot-tile-count">362 / 448</div>
+            </div>
+          </div>
+          <div class="pilot-help" style="display:none">
+            <div class="pilot-help-title">What it means</div>
+            <div class="pilot-help-text">Shooting from too far increases GSD and reduces detail in reconstructed 3D model.</div>
+            <div class="pilot-help-title">How to fix</div>
+            <div class="pilot-help-text">Fly closer to the inspection surface, maintaining the required distance for desired GSD.</div>
+          </div>
 
-        <div class="pilot-param crit">
-          <div class="pilot-param-icon"><i data-lucide="x" style="width:14px;height:14px;stroke-width:3"></i></div>
-          <div class="pilot-param-name">Distance to Object</div>
-          <div class="pilot-param-req">max. 2.6 m</div>
-          <div class="pilot-param-count">362/448</div>
-          <div class="pilot-param-pct">80.8%</div>
-          <button class="pilot-help-btn" onclick="toggleHelp(this)" aria-label="Help"><i data-lucide="help-circle" style="width:14px;height:14px"></i></button>
-        </div>
-        <div class="pilot-help" style="display:none">
-          <div class="pilot-help-title">What it means</div>
-          <div class="pilot-help-text">Shooting from too far increases GSD and reduces detail in reconstructed 3D model.</div>
-          <div class="pilot-help-title">How to fix</div>
-          <div class="pilot-help-text">Fly closer to the inspection surface, maintaining the required distance for desired GSD.</div>
-        </div>
+          <div class="pilot-tile crit">
+            <div class="pilot-tile-icon"><i data-lucide="x" style="width:20px;height:20px;stroke-width:3"></i></div>
+            <div class="pilot-tile-body">
+              <div class="pilot-tile-name">GSD</div>
+              <div class="pilot-tile-pct">90.0%</div>
+              <div class="pilot-tile-req">max. 0.7 mm/pix</div>
+              <div class="pilot-tile-count">403 / 448</div>
+            </div>
+          </div>
+          <div class="pilot-help" style="display:none">
+            <div class="pilot-help-title">What it means</div>
+            <div class="pilot-help-text">Ground Sampling Distance above threshold means images lack sufficient resolution for accurate crack and defect detection.</div>
+            <div class="pilot-help-title">How to fix</div>
+            <div class="pilot-help-text">Reduce distance to object. GSD is a function of distance, focal length, and sensor pixel size.</div>
+          </div>
 
-        <div class="pilot-param crit">
-          <div class="pilot-param-icon"><i data-lucide="x" style="width:14px;height:14px;stroke-width:3"></i></div>
-          <div class="pilot-param-name">GSD</div>
-          <div class="pilot-param-req">max. 0.7 mm/pix</div>
-          <div class="pilot-param-count">403/448</div>
-          <div class="pilot-param-pct">90.0%</div>
-          <button class="pilot-help-btn" onclick="toggleHelp(this)" aria-label="Help"><i data-lucide="help-circle" style="width:14px;height:14px"></i></button>
-        </div>
-        <div class="pilot-help" style="display:none">
-          <div class="pilot-help-title">What it means</div>
-          <div class="pilot-help-text">Ground Sampling Distance above threshold means images lack sufficient resolution for accurate crack and defect detection.</div>
-          <div class="pilot-help-title">How to fix</div>
-          <div class="pilot-help-text">Reduce distance to object. GSD is a function of distance, focal length, and sensor pixel size.</div>
-        </div>
+          <div class="pilot-tile info">
+            <div class="pilot-tile-icon"><i data-lucide="info" style="width:20px;height:20px"></i></div>
+            <div class="pilot-tile-body">
+              <div class="pilot-tile-name">GPS</div>
+              <div class="pilot-tile-pct">100%</div>
+              <div class="pilot-tile-req">Used</div>
+              <div class="pilot-tile-count">448 / 448</div>
+            </div>
+          </div>
 
-        <div class="pilot-param info">
-          <div class="pilot-param-icon"><i data-lucide="info" style="width:14px;height:14px"></i></div>
-          <div class="pilot-param-name">GPS</div>
-          <div class="pilot-param-req">Used</div>
-          <div class="pilot-param-count">448/448</div>
-          <div class="pilot-param-pct">100.0%</div>
-        </div>
-
-        <div class="pilot-param info">
-          <div class="pilot-param-icon"><i data-lucide="info" style="width:14px;height:14px"></i></div>
-          <div class="pilot-param-name">RTK Signal</div>
-          <div class="pilot-param-req">Good</div>
-          <div class="pilot-param-count">398/448</div>
-          <div class="pilot-param-pct">88.8%</div>
+          <div class="pilot-tile info">
+            <div class="pilot-tile-icon"><i data-lucide="info" style="width:20px;height:20px"></i></div>
+            <div class="pilot-tile-body">
+              <div class="pilot-tile-name">RTK Signal</div>
+              <div class="pilot-tile-pct">88.8%</div>
+              <div class="pilot-tile-req">Good</div>
+              <div class="pilot-tile-count">398 / 448</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- ════════════ INFRARED PARAMETERS ════════════ -->
       <div class="pilot-block review">
         <div class="pilot-block-hdr">
-          <i data-lucide="thermometer" style="width:14px;height:14px"></i>
+          <i data-lucide="thermometer" style="width:16px;height:16px"></i>
           <span class="pilot-block-title">Infrared Parameters</span>
-          <span class="pilot-block-badge review">REVIEW</span>
         </div>
-
-        <div class="pilot-param warn">
-          <div class="pilot-param-icon"><i data-lucide="alert-triangle" style="width:14px;height:14px;stroke-width:2.5"></i></div>
-          <div class="pilot-param-name">IR Mode</div>
-          <div class="pilot-param-req">WhiteIron</div>
-          <div class="pilot-param-count">79/88</div>
-          <div class="pilot-param-pct">89.8%</div>
-          <button class="pilot-help-btn" onclick="toggleHelp(this)" aria-label="Help"><i data-lucide="help-circle" style="width:14px;height:14px"></i></button>
-        </div>
-        <div class="pilot-help" style="display:none">
-          <div class="pilot-help-title">What it means</div>
-          <div class="pilot-help-text">WhiteIron palette is the standard for thermal inspection. Other palettes reduce consistency in automated defect detection.</div>
-          <div class="pilot-help-title">How to fix</div>
-          <div class="pilot-help-text">Set IR palette to "White Hot" / "WhiteIron" in thermal camera settings before the flight.</div>
+        <div class="pilot-tiles">
+          <div class="pilot-tile warn">
+            <div class="pilot-tile-icon"><i data-lucide="alert-triangle" style="width:20px;height:20px;stroke-width:2.5"></i></div>
+            <div class="pilot-tile-body">
+              <div class="pilot-tile-name">IR Mode</div>
+              <div class="pilot-tile-pct">89.8%</div>
+              <div class="pilot-tile-req">req. WhiteIron</div>
+              <div class="pilot-tile-count">79 / 88</div>
+            </div>
+          </div>
+          <div class="pilot-help" style="display:none">
+            <div class="pilot-help-title">What it means</div>
+            <div class="pilot-help-text">WhiteIron palette is the standard for thermal inspection. Other palettes reduce consistency in automated defect detection.</div>
+            <div class="pilot-help-title">How to fix</div>
+            <div class="pilot-help-text">Set IR palette to "White Hot" / "WhiteIron" in thermal camera settings before the flight.</div>
+          </div>
         </div>
       </div>
 
@@ -748,13 +758,23 @@ document.querySelectorAll('.cam-pill').forEach(pill => {
 });
 
 /* ── Help toggle ──── */
-function toggleHelp(btn) {
-  const helpPanel = btn.closest('.pilot-param').nextElementSibling;
+function toggleHelp(tile) {
+  const helpPanel = tile.nextElementSibling;
   if (!helpPanel || !helpPanel.classList.contains('pilot-help')) return;
   const isOpen = helpPanel.style.display !== 'none';
-  helpPanel.style.display = isOpen ? 'none' : 'block';
-  btn.classList.toggle('open', !isOpen);
+  // close all open help panels first
+  document.querySelectorAll('.pilot-help').forEach(h => h.style.display = 'none');
+  document.querySelectorAll('.pilot-tile').forEach(t => t.classList.remove('open'));
+  if (!isOpen) {
+    helpPanel.style.display = 'block';
+    tile.classList.add('open');
+  }
 }
+document.querySelectorAll('.pilot-tile').forEach(tile => {
+  if (tile.nextElementSibling && tile.nextElementSibling.classList.contains('pilot-help')) {
+    tile.addEventListener('click', () => toggleHelp(tile));
+  }
+});
 
 /* ── Camera row selection ──── */
 function selectCam(row, key) {
