@@ -500,3 +500,205 @@ body {
   color: var(--r-text);
   line-height: var(--r-line-height);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PILOT SUMMARY TAB
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Camera Selector Pills ──────────────────────────────────────────── */
+.cam-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--r-space-md);
+  margin-bottom: 20px;
+}
+.cam-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--r-space-sm);
+  padding: 6px 16px;
+  background: var(--r-bg-panel);
+  border: 1.5px solid var(--r-border);
+  border-radius: var(--r-radius-xl);
+  font-family: var(--r-font);
+  font-size: var(--r-font-size);
+  font-weight: 600;
+  color: var(--r-text);
+  cursor: pointer;
+  transition: all var(--r-transition);
+  white-space: nowrap;
+}
+.cam-pill:hover {
+  border-color: var(--r-blue);
+  background: var(--r-blue-light);
+}
+.cam-pill.active {
+  background: var(--r-blue);
+  border-color: var(--r-blue);
+  color: #fff;
+}
+.cam-pill-count {
+  font-size: var(--r-font-size-sm);
+  font-weight: 700;
+  color: var(--r-text-muted);
+  margin-left: 2px;
+}
+.cam-pill.active .cam-pill-count {
+  color: rgba(255,255,255,.7);
+}
+
+/* ── Block (section card) ───────────────────────────────────────────── */
+.pilot-block {
+  background: var(--r-bg-panel);
+  border: 1px solid var(--r-border);
+  border-radius: var(--r-radius-lg);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.pilot-block.go     { border-left: 3px solid var(--r-ok); }
+.pilot-block.review { border-left: 3px solid var(--r-warn); }
+.pilot-block.nogo   { border-left: 3px solid var(--r-crit); }
+
+/* Block header */
+.pilot-block-hdr {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--r-bg-muted);
+  border-bottom: 1px solid var(--r-border-light);
+}
+.pilot-block.go     .pilot-block-hdr { color: var(--r-ok); }
+.pilot-block.review .pilot-block-hdr { color: var(--r-warn); }
+.pilot-block.nogo   .pilot-block-hdr { color: var(--r-crit); }
+
+.pilot-block-title {
+  font-size: var(--r-font-size-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pilot-block-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 1px 8px;
+  border-radius: var(--r-radius-sm);
+  text-transform: uppercase;
+  margin-left: 4px;
+}
+.pilot-block-badge.go     { background: var(--r-ok);   color: #fff; }
+.pilot-block-badge.review { background: var(--r-warn);  color: #fff; }
+.pilot-block-badge.nogo   { background: var(--r-crit);  color: #fff; }
+
+.pilot-block-gsd {
+  font-size: var(--r-font-size-sm);
+  font-weight: 600;
+  color: var(--r-text-muted);
+  margin-left: auto;
+}
+
+/* ── Parameter Row — grid layout ────────────────────────────────────── */
+.pilot-param {
+  display: grid;
+  grid-template-columns: 20px 1fr 100px 72px 56px 26px;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  min-height: 34px;
+}
+.pilot-param + .pilot-param { border-top: 1px solid var(--r-border-light); }
+.pilot-param.crit { border-left: 3px solid var(--r-crit); padding-left: 11px; }
+.pilot-param.warn { border-left: 3px solid var(--r-warn); padding-left: 11px; }
+.pilot-param.ok   { border-left: 3px solid var(--r-ok);   padding-left: 11px; }
+.pilot-param.info { border-left: 3px solid var(--r-info); padding-left: 11px; }
+
+.pilot-param-icon { display: flex; align-items: center; justify-content: center; }
+.pilot-param.crit .pilot-param-icon { color: var(--r-crit); }
+.pilot-param.warn .pilot-param-icon { color: var(--r-warn); }
+.pilot-param.ok   .pilot-param-icon { color: var(--r-ok); }
+.pilot-param.info .pilot-param-icon { color: var(--r-info); }
+
+.pilot-param-name {
+  font-size: var(--r-font-size-sm);
+  font-weight: 600;
+  color: var(--r-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pilot-param-req {
+  font-size: var(--r-font-size-sm);
+  color: var(--r-text-muted);
+  font-style: italic;
+  white-space: nowrap;
+}
+.pilot-param-count {
+  font-size: var(--r-font-size-sm);
+  color: var(--r-text-secondary);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+.pilot-param-pct {
+  font-size: var(--r-font-size-sm);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+.pilot-param.crit .pilot-param-pct { color: var(--r-crit); }
+.pilot-param.warn .pilot-param-pct { color: var(--r-warn); }
+.pilot-param.ok   .pilot-param-pct { color: var(--r-ok); }
+.pilot-param.info .pilot-param-pct { color: var(--r-info); }
+
+/* Info rows — no help button, 5-col grid */
+.pilot-param.info {
+  grid-template-columns: 20px 1fr 100px 72px 56px;
+}
+
+/* Help button */
+.pilot-help-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--r-border-light);
+  background: transparent;
+  color: var(--r-text-muted);
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--r-transition-fast);
+}
+.pilot-help-btn:hover,
+.pilot-help-btn.open {
+  color: var(--r-blue);
+  border-color: var(--r-blue);
+  background: var(--r-blue-light);
+}
+
+/* Help panel */
+.pilot-help {
+  padding: 8px 14px 8px 40px;
+  background: var(--r-bg-muted);
+  border-top: 1px solid var(--r-border-light);
+}
+.pilot-help-title {
+  font-size: var(--r-font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--r-text-muted);
+  margin-bottom: 1px;
+  margin-top: 6px;
+}
+.pilot-help-title:first-child { margin-top: 0; }
+.pilot-help-text {
+  font-size: var(--r-font-size-sm);
+  color: var(--r-text-secondary);
+  line-height: 1.5;
+}
