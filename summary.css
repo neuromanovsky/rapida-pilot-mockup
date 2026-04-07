@@ -558,12 +558,15 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 0;
-  color: var(--r-text);
+  padding: 20px 0 6px;
+  color: #4a4a5a;
+}
+.pilot-block:first-child .pilot-block-hdr {
+  padding-top: 10px;
 }
 
 .pilot-block-title {
-  font-size: var(--r-font-size);
+  font-size: 19px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -583,14 +586,10 @@ body {
 .pilot-block-badge.nogo   { background: var(--r-crit);  color: #fff; }
 
 .pilot-block-gsd {
-  font-size: var(--r-font-size-sm);
-  font-weight: 500;
-  color: var(--r-text);
-  margin-left: 4px;
-  padding: 2px 10px;
-  border: 1px solid var(--r-border);
-  border-radius: var(--r-radius-sm);
-  background: var(--r-bg);
+  font-size: 19px;
+  font-weight: 400;
+  color: #4a4a5a;
+  margin-left: 8px;
 }
 
 /* ── Tile grid ──────────────────────────────────────────────────────── */
@@ -615,6 +614,13 @@ body {
 .pilot-tile:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
 }
+.pilot-tile.open {
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+}
+.pilot-tile.crit.open { outline: 2px solid var(--r-crit); outline-offset: -2px; }
+.pilot-tile.warn.open { outline: 2px solid var(--r-warn); outline-offset: -2px; }
+.pilot-tile.ok.open   { outline: 2px solid var(--r-ok);   outline-offset: -2px; }
+.pilot-tile.info.open { outline: 2px solid var(--r-info); outline-offset: -2px; }
 
 /* Icon column — colored background */
 .pilot-tile-icon {
@@ -705,10 +711,15 @@ body {
   background: var(--r-blue-light);
 }
 
-/* Help panel — spans full grid width below the tile */
+/* Help panel — under its own tile (same width) */
+.pilot-tile-wrap {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+}
 .pilot-help {
-  grid-column: 1 / -1;
-  padding: 16px 20px;
+  padding: 14px 16px;
+  margin-top: 6px;
   background: #fff;
   border: 1px solid var(--r-border);
   border-radius: var(--r-radius-md);
@@ -805,7 +816,6 @@ body {
 
 /* ── Notice card (e.g. "not detected") ─────────────────────────────── */
 .pilot-notice {
-  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -826,31 +836,36 @@ body {
   line-height: 1.4;
 }
 
-/* ── Success card (All Good) ────────────────────────────────────────── */
+/* ── Success card (All Good) — tile-sized ───────────────────────────── */
 .pilot-success {
-  grid-column: 1 / -1;
   display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 20px 24px;
+  align-self: start;
   background: var(--r-ok);
   border-radius: var(--r-radius-md);
+  overflow: hidden;
   color: #fff;
 }
 .pilot-success-icon {
-  flex-shrink: 0;
   display: flex;
   align-items: center;
-  opacity: .9;
+  justify-content: center;
+  width: 44px;
+  flex-shrink: 0;
+  background: rgba(0,0,0,.12);
+}
+.pilot-success-body {
+  flex: 1;
+  padding: 14px 16px;
 }
 .pilot-success-title {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 .pilot-success-sub {
-  font-size: 15px;
+  font-size: var(--r-font-size);
   font-weight: 400;
   line-height: 1.5;
   opacity: .85;
+  margin-top: 2px;
 }

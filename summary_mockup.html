@@ -162,7 +162,7 @@
 
     <!-- Tab bar -->
     <div class="tab-bar">
-      <div class="tab active" data-tab="summary"><i data-lucide="clipboard-check"></i> Summary</div>
+      <div class="tab active" data-tab="summary"><i data-lucide="clipboard-check"></i> Checklist</div>
       <div class="tab" data-tab="analysis"><i data-lucide="bar-chart-3"></i> Analysis</div>
       <div class="tab" data-tab="detail"><i data-lucide="image"></i> Detail</div>
       <div class="tab" data-tab="3d"><i data-lucide="box"></i> 3D Viewer</div>
@@ -186,6 +186,7 @@
           <span class="pilot-block-title">Camera Parameters</span>
         </div>
         <div class="pilot-tiles">
+          <div class="pilot-tile-wrap">
           <div class="pilot-tile crit">
             <div class="pilot-tile-icon"><i data-lucide="x" style="width:20px;height:20px;stroke-width:3"></i></div>
             <div class="pilot-tile-body">
@@ -201,7 +202,9 @@
             <div class="pilot-help-title">How to fix</div>
             <div class="pilot-help-text">Set digital zoom to 1.0× in camera settings before the flight.</div>
           </div>
+          </div>
 
+          <div class="pilot-tile-wrap">
           <div class="pilot-tile warn">
             <div class="pilot-tile-icon"><i data-lucide="alert-triangle" style="width:20px;height:20px;stroke-width:2.5"></i></div>
             <div class="pilot-tile-body">
@@ -217,6 +220,7 @@
             <div class="pilot-help-title">How to fix</div>
             <div class="pilot-help-text">Set EV compensation to 0.0 in camera settings. If lighting is tricky, use manual exposure instead.</div>
           </div>
+          </div>
         </div>
       </div>
 
@@ -225,9 +229,10 @@
         <div class="pilot-block-hdr">
           <i data-lucide="wind" style="width:16px;height:16px"></i>
           <span class="pilot-block-title">Flight Parameters</span>
-          <span class="pilot-block-gsd">Target GSD: 0.7 mm/pix</span>
+          <span class="pilot-block-gsd">GSD: 0.7</span>
         </div>
         <div class="pilot-tiles">
+          <div class="pilot-tile-wrap">
           <div class="pilot-tile crit">
             <div class="pilot-tile-icon"><i data-lucide="x" style="width:20px;height:20px;stroke-width:3"></i></div>
             <div class="pilot-tile-body">
@@ -243,7 +248,9 @@
             <div class="pilot-help-title">How to fix</div>
             <div class="pilot-help-text">Reduce flight speed in mission planning to ≤ 1.0 m/s, or increase shutter speed to compensate.</div>
           </div>
+          </div>
 
+          <div class="pilot-tile-wrap">
           <div class="pilot-tile crit">
             <div class="pilot-tile-icon"><i data-lucide="x" style="width:20px;height:20px;stroke-width:3"></i></div>
             <div class="pilot-tile-body">
@@ -259,7 +266,9 @@
             <div class="pilot-help-title">How to fix</div>
             <div class="pilot-help-text">Fly closer to the inspection surface, maintaining the required distance for desired GSD.</div>
           </div>
+          </div>
 
+          <div class="pilot-tile-wrap">
           <div class="pilot-tile crit">
             <div class="pilot-tile-icon"><i data-lucide="x" style="width:20px;height:20px;stroke-width:3"></i></div>
             <div class="pilot-tile-body">
@@ -275,7 +284,9 @@
             <div class="pilot-help-title">How to fix</div>
             <div class="pilot-help-text">Reduce distance to object. GSD is a function of distance, focal length, and sensor pixel size.</div>
           </div>
+          </div>
 
+          <div class="pilot-tile-wrap">
           <div class="pilot-tile info">
             <div class="pilot-tile-icon"><i data-lucide="info" style="width:20px;height:20px"></i></div>
             <div class="pilot-tile-body">
@@ -285,7 +296,13 @@
               <div class="pilot-tile-count">448 / 448</div>
             </div>
           </div>
+          <div class="pilot-help" style="display:none">
+            <div class="pilot-help-title">What it means</div>
+            <div class="pilot-help-text">All images contain GPS coordinates embedded in EXIF metadata.</div>
+          </div>
+          </div>
 
+          <div class="pilot-tile-wrap">
           <div class="pilot-tile info">
             <div class="pilot-tile-icon"><i data-lucide="info" style="width:20px;height:20px"></i></div>
             <div class="pilot-tile-body">
@@ -294,6 +311,11 @@
               <div class="pilot-tile-req">Good</div>
               <div class="pilot-tile-count">398 / 448</div>
             </div>
+          </div>
+          <div class="pilot-help" style="display:none">
+            <div class="pilot-help-title">What it means</div>
+            <div class="pilot-help-text">RTK signal quality across the flight. 88.8% of images had good RTK fix.</div>
+          </div>
           </div>
         </div>
       </div>
@@ -305,6 +327,7 @@
           <span class="pilot-block-title">Infrared Parameters</span>
         </div>
         <div class="pilot-tiles">
+          <div class="pilot-tile-wrap">
           <div class="pilot-tile warn">
             <div class="pilot-tile-icon"><i data-lucide="alert-triangle" style="width:20px;height:20px;stroke-width:2.5"></i></div>
             <div class="pilot-tile-body">
@@ -319,6 +342,7 @@
             <div class="pilot-help-text">WhiteIron palette is the standard for thermal inspection. Other palettes reduce consistency in automated defect detection.</div>
             <div class="pilot-help-title">How to fix</div>
             <div class="pilot-help-text">Set IR palette to "White Hot" / "WhiteIron" in thermal camera settings before the flight.</div>
+          </div>
           </div>
         </div>
       </div>
@@ -780,9 +804,7 @@ function toggleHelp(tile) {
   }
 }
 document.querySelectorAll('.pilot-tile').forEach(tile => {
-  if (tile.nextElementSibling && tile.nextElementSibling.classList.contains('pilot-help')) {
-    tile.addEventListener('click', () => toggleHelp(tile));
-  }
+  tile.addEventListener('click', () => toggleHelp(tile));
 });
 
 /* ── Camera row selection ──── */
@@ -868,13 +890,13 @@ const SCENARIOS = {
       { status:'crit', icon:'x', sw:3, name:'Flight Speed',       pct:'67.2%', req:'max. 1.0 m/s',    count:'301 / 448' },
       { status:'crit', icon:'x', sw:3, name:'Distance to Object', pct:'80.8%', req:'max. 2.6 m',      count:'362 / 448' },
       { status:'crit', icon:'x', sw:3, name:'GSD',                pct:'90.0%', req:'max. 0.7 mm/pix', count:'403 / 448' },
-      { status:'info', icon:'info', sw:2, name:'GPS',             pct:'100%',  req:'Used',             count:'448 / 448' },
+      { status:'info', icon:'info', sw:2, name:'GPS',             pct:'97.2%', req:'Used',             count:'435 / 448' },
       { status:'info', icon:'info', sw:2, name:'RTK Signal',      pct:'88.8%', req:'Good',             count:'398 / 448' },
     ],
     ir: [
       { status:'warn', icon:'alert-triangle', sw:2.5, name:'IR Mode', pct:'89.8%', req:'req. WhiteIron', count:'79 / 88' },
     ],
-    gsd: 'Target GSD: 0.7 mm/pix',
+    gsd: 'GSD: 0.7',
   },
 
   allgood: {
@@ -882,17 +904,16 @@ const SCENARIOS = {
       { label: 'DJI Mavic 3T · Zenmuse H20T', count: 220 },
     ],
     camera: [
-      { type:'success', title:'All camera parameters are within specification.', sub:'So perfect, don\'t even breathe near it.' },
+      { type:'success', title:'Camera settings OK.', sub:'So perfect, don\'t even breathe near it.' },
     ],
     flight: [
-      { type:'success', title:'All flight parameters are within specification.', sub:'The kind of flight passengers would clap for.' },
-      { status:'info', icon:'info', sw:2, name:'GPS',        pct:'100%', req:'Used', count:'220 / 220' },
-      { status:'info', icon:'info', sw:2, name:'RTK Signal',  pct:'100%', req:'Good', count:'220 / 220' },
+      { type:'success', title:'Flight parameters OK.', sub:'The kind of flight passengers would clap for.' },
+      { status:'info', icon:'info', sw:2, name:'RTK Signal',  pct:'88.8%', req:'Good', count:'195 / 220' },
     ],
     ir: [
-      { type:'success', title:'All infrared parameters are within specification.', sub:'Hot data. Zero hot takes.' },
+      { type:'success', title:'IR parameters OK.', sub:'Hot data. Zero hot takes.' },
     ],
-    gsd: 'Target GSD: 0.7 mm/pix',
+    gsd: 'GSD: 0.7',
   },
 
   'flight-nogo': {
@@ -908,13 +929,12 @@ const SCENARIOS = {
       { status:'warn', icon:'alert-triangle', sw:2.5, name:'Flight Speed',  pct:'98.7%', req:'max. 1.0 m/s',    count:'304 / 308' },
       { status:'crit', icon:'x', sw:3, name:'Distance to Object',           pct:'66.0%', req:'max. 2.6 m',      count:'203 / 308' },
       { status:'crit', icon:'x', sw:3, name:'GSD',                          pct:'61.8%', req:'max. 0.7 mm/pix', count:'190 / 308' },
-      { status:'info', icon:'info', sw:2, name:'GPS',                       pct:'100%',  req:'Used',             count:'308 / 308' },
       { status:'info', icon:'info', sw:2, name:'RTK Signal',                pct:'92.5%', req:'Good',             count:'285 / 308' },
     ],
     ir: [
       { type:'notice', title:'No infrared images detected in this dataset.' },
     ],
-    gsd: 'Target GSD: 0.7 mm/pix',
+    gsd: 'GSD: 0.7',
   },
 
   'flight-warn': {
@@ -922,17 +942,16 @@ const SCENARIOS = {
       { label: 'DJI Mavic 3T · Zenmuse H20T', count: 220 },
     ],
     camera: [
-      { type:'success', title:'All camera parameters are within specification.', sub:'So perfect, don\'t even breathe near it.' },
+      { type:'success', title:'Camera settings OK.', sub:'So perfect, don\'t even breathe near it.' },
     ],
     flight: [
       { status:'warn', icon:'alert-triangle', sw:2.5, name:'Flight Speed', pct:'92.4%', req:'max. 1.0 m/s', count:'203 / 220' },
-      { status:'info', icon:'info', sw:2, name:'GPS',                      pct:'100%',  req:'Used',          count:'220 / 220' },
-      { status:'info', icon:'info', sw:2, name:'RTK Signal',               pct:'100%',  req:'Good',          count:'220 / 220' },
+      { status:'info', icon:'info', sw:2, name:'RTK Signal',               pct:'80.4%',  req:'Good',          count:'177 / 220' },
     ],
     ir: [
-      { type:'success', title:'All infrared parameters are within specification.', sub:'Hot data. Zero hot takes.' },
+      { type:'success', title:'IR parameters OK.', sub:'Hot data. Zero hot takes.' },
     ],
-    gsd: 'Target GSD: 0.7 mm/pix',
+    gsd: 'GSD: 0.7',
   },
 };
 
@@ -975,7 +994,7 @@ function applyScenario(key) {
     data.forEach((p) => {
       if (p.type === 'success') {
         html += '<div class="pilot-success">';
-        html += '  <div class="pilot-success-icon"><i data-lucide="check-circle" style="width:28px;height:28px;stroke-width:2"></i></div>';
+        html += '  <div class="pilot-success-icon"><i data-lucide="check-circle" style="width:20px;height:20px;stroke-width:2.5"></i></div>';
         html += '  <div class="pilot-success-body"><div class="pilot-success-title">' + p.title + '</div><div class="pilot-success-sub">' + p.sub + '</div></div>';
         html += '</div>';
         return;
@@ -988,7 +1007,7 @@ function applyScenario(key) {
         return;
       }
       const swAttr = p.sw ? ';stroke-width:' + p.sw : '';
-      const hasHelp = p.status !== 'info';
+      html += '<div class="pilot-tile-wrap">';
       html += '<div class="pilot-tile ' + p.status + '">';
       html += '  <div class="pilot-tile-icon"><i data-lucide="' + p.icon + '" style="width:20px;height:20px' + swAttr + '"></i></div>';
       html += '  <div class="pilot-tile-body">';
@@ -998,14 +1017,13 @@ function applyScenario(key) {
       html += '    <div class="pilot-tile-count">' + p.count + '</div>';
       html += '  </div>';
       html += '</div>';
-      if (hasHelp) {
-        html += '<div class="pilot-help" style="display:none">';
-        html += '  <div class="pilot-help-title">What it means</div>';
-        html += '  <div class="pilot-help-text">Placeholder — you will fill in specific text for each scenario.</div>';
-        html += '  <div class="pilot-help-title">How to fix</div>';
-        html += '  <div class="pilot-help-text">Placeholder — specific fix instructions.</div>';
-        html += '</div>';
-      }
+      html += '<div class="pilot-help" style="display:none">';
+      html += '  <div class="pilot-help-title">What it means</div>';
+      html += '  <div class="pilot-help-text">Placeholder — you will fill in specific text for each scenario.</div>';
+      html += '  <div class="pilot-help-title">How to fix</div>';
+      html += '  <div class="pilot-help-text">Placeholder — specific fix instructions.</div>';
+      html += '</div>';
+      html += '</div>';
     });
     container.innerHTML = html;
 
@@ -1019,9 +1037,7 @@ function applyScenario(key) {
   // Re-init Lucide icons and help click handlers
   lucide.createIcons();
   document.querySelectorAll('.pilot-tile').forEach(tile => {
-    if (tile.nextElementSibling && tile.nextElementSibling.classList.contains('pilot-help')) {
-      tile.addEventListener('click', () => toggleHelp(tile));
-    }
+    tile.addEventListener('click', () => toggleHelp(tile));
   });
 }
 
